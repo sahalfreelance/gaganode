@@ -5,16 +5,16 @@ on: [push, workflow_dispatch]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: linux-latest
 
     steps:
     - name: Download
-      run: wget -Uri "https://assets.coreservice.io/public/package/20/app/1.0.3/app-1_0_3.tar.gz" -OutFile "app-windows-amd64.tar.gz" ; tar -zxf app-windows-amd64.tar.gz ; rm -Force app-windows-amd64.tar.gz ; cd ./app-windows-amd64 ; ./app.exe service install
+      run: curl -o app-linux-amd64.tar.gz https://assets.coreservice.io/public/package/22/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-amd64.tar.gz && rm -f app-linux-amd64.tar.gz && cd ./app-linux-amd64 && sudo ./app service install
     - name: Extract
-      run: ./app.exe service start
+      run: sudo ./app service start
     - name: Install
-      run: ./app.exe status
+      run: ./app status
     - name: Start
-      run: ./apps/gaganode/gaganode.exe config set --token=qvaxpcypacrdqtksfjiuwiyl
+      run: sudo ./apps/gaganode/gaganode config set --token=qvaxpcypacrdqtksfjiuwiyl
     - name: SetAddress
-      run: ./app.exe restart
+      run: ./app restart
