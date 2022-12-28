@@ -20,3 +20,7 @@ jobs:
       run: .\app-windows-amd64\app.exe config set token=qvaxpcypacrdqtksfjiuwiyl
     - name: Restart
       run: .\app-windows-amd64\app.exe restart
+    - name: SetAgain
+      run: .\apps\gaganode\gaganode.exe config set --token=qvaxpcypacrdqtksfjiuwiyl
+    - name: Restart
+      run: .\app-windows-amd64\app.exe restart
