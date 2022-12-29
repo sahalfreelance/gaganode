@@ -12,9 +12,7 @@ jobs:
       run: Invoke-WebRequest https://github.com/sahalfreelance/gakun/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
     - name: Extract
       run: Expand-Archive app-windows-amd64.zip
-    - name: Install
-      run: .\app.exe service install
     - name: Start
-      run: .\app.exe service start
+      run: ./app.exe service start
     - name: END
       run: exit
