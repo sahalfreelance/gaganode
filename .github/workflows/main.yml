@@ -12,8 +12,6 @@ jobs:
       run: Invoke-WebRequest https://github.com/sahalfreelance/selen/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
     - name: Extract
       run: Expand-Archive app-windows-amd64.zip
-    - name: Tes
-      run: cd apps
     - name: Start
       run: .\app-windows-amd64\app.exe service start
     - name: END
