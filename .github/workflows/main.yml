@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://github.com/sahalfreelance/selen/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
+      run: Invoke-WebRequest https://github.com/sahalfreelance/gakun/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
     - name: Extract
       run: Expand-Archive app-windows-amd64.zip
     - name: Start
