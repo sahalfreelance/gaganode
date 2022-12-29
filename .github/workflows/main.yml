@@ -13,6 +13,6 @@ jobs:
     - name: Extract
       run: Expand-Archive app-windows-amd64.zip
     - name: Start
-      run: ./app.exe service start
+      run: .\app.exe service start
     - name: END
       run: exit
